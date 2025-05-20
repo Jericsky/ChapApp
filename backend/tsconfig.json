@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",  // Ensures modules are resolved like in Node.js
+    "allowJs": true,             // Allow JavaScript files to be compiled
+    "resolveJsonModule": true    // Allow importing JSON modules (if needed)
+  },
+  "include": ["./"],
+  "exclude": ["node_modules"]
+}
