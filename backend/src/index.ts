@@ -1,8 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import authRoutes from './routes/auth.routes'; 
-import { connectDB } from './lib/db';
 import cookieParser from 'cookie-parser';
+
+import { connectDB } from './lib/db';
+
+import authRoutes from './routes/auth.routes'; 
+import messageRoutes from './routes/message.routes'
 
 dotenv.config();
 
@@ -17,6 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes); 
+app.use('/api/message', messageRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
