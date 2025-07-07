@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useAuthStore } from "../store/useAuthStore";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import AuthImagePattern from "../components/AuthImagePattern";
+import toast from "react-hot-toast";
 
 export default function SignupPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -13,9 +15,19 @@ export default function SignupPage() {
 
     const { signup, isSigningUp } = useAuthStore();
 
-    const validateForm = () => {};
+    const validateForm = () => {
+        if(!formData.fullName.trim()) return toast.error('Full name is required');
+
+        return true;
+    };
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const success = validateForm();
+        
+        if(success === true) signup(formData)
     }
 
   return (
@@ -103,8 +115,8 @@ export default function SignupPage() {
                     <button type="submit" className="btn btn-primary w-full" disabled={isSigningUp}>
                         {isSigningUp ? (
                             <>
-                            <Loader2 className="size-5 animate-spin" />
-                            Loading...
+                                <Loader2 className="size-5 animate-spin" />
+                                Loading...
                             </>
                         ) : (
                             "Create Account"
@@ -114,14 +126,20 @@ export default function SignupPage() {
 
                 <div className="text-center">
                     <p className="text-base-content/60">
-                    Already have an account?{" "}
-                    <Link to="/login" className="link link-primary">
-                        Sign in
-                    </Link>
+                        Already have an account?{" "}
+                        <Link to="/login" className="link link-primary">
+                            Sign in
+                        </Link>
                     </p>
                 </div>
             </div>
         </div>
+
+        {/* Right side */}
+        <AuthImagePattern
+            title="Join our community"
+            subtitle="Connect with friends, share moments, and stay in touch with your loved ones."
+        />
     </div>
   )
 }
