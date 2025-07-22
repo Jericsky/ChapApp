@@ -17,17 +17,19 @@ export default function SignupPage() {
 
     const validateForm = () => {
         if(!formData.fullName.trim()) return toast.error('Full name is required');
-
+        if(!formData.email.trim()) return toast.error('Email is required.');
+        if(!formData.password) return toast.error('Password is required.')
+        
         return true;
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const success = validateForm();
         
-        if(success === true) signup(formData)
+        if(success === true) signup(formData);
     }
 
   return (
