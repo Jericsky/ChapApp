@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Camera, Mail, User } from "lucide-react";
 
@@ -20,6 +20,10 @@ export default function ProfilePage() {
       await updateProfile({ profilePic: base64image });
     }
   }
+
+  useEffect(() => {
+    console.log(isUpdatingProfile);
+  }, [])
 
   return (
     <div className="h-screen pt-20">

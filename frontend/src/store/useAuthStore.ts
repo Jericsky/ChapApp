@@ -90,6 +90,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     },
 
     updateProfile: async(data: ProfileData) => {
+        set({ isUpdatingProfile: true })
         try {
             const res = await axiosInstance.patch('/auth/update-profile', data);
             console.log(res);
