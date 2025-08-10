@@ -35,7 +35,6 @@ export default function ProfilePage() {
           </div>
 
           {/* avatar upload section */}
-
           <div className="flex flex-col items-center gap-4">
             <div className="relative">
               <img
