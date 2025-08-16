@@ -18,6 +18,7 @@ type AuthStore = {
     isLoggingIn: boolean;
     isUpdatingProfile: boolean;
     isCheckingAuth: boolean;
+    onlineUsers: string[];
     checkAuth: () => Promise<void>;
     signup: (data: SignupData) => Promise<void>; 
     login: (data: SignupData) => Promise<void>;
@@ -32,6 +33,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     isUpdatingProfile: false,
 
     isCheckingAuth: true,
+    onlineUsers: [],
 
     checkAuth: async() => {
         try {
@@ -56,7 +58,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
             toast.success('Account successfully created.');
 
         } catch (error: any) {
-            toast.error(error.response.data.error);
+            // toast.error(error.response.data.error);
             console.log(error);
         } finally {
             set({ isSigningUp: false });
@@ -71,7 +73,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
             toast.success("Logged in successfully");
 
         } catch (error: any) {
-            toast.error(error.response.data.error);
+            // toast.error(error.response.data.error);
             console.log(error);
         } finally {
             set({ isLoggingIn: false });
