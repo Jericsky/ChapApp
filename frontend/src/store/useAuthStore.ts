@@ -12,8 +12,15 @@ type ProfileData = {
     profilePic: string | ArrayBuffer | null;
 }
 
+type AuthUser = {
+    _id: string;
+    email: string;
+    fullName: string;
+    profilePic: string;
+}
+
 type AuthStore = {
-    authUser: any; 
+    authUser: AuthUser | null; 
     isSigningUp: boolean;
     isLoggingIn: boolean;
     isUpdatingProfile: boolean;

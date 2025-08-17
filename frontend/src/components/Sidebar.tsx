@@ -31,9 +31,11 @@ export default function Sidebar() {
                     key={user._id}
                     onClick={() => setSelectedUser(user)}
                     className={`
-                    w-full p-3 flex items-center gap-3
-                    hover:bg-base-300 transition-colors
-                    ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
+                    w-full p-3 flex items-center gap-3 transition-colors rounded-lg
+                    hover:bg-base-200
+                    ${selectedUser?._id === user._id 
+                        ? "bg-primary/10 border-l-4 border-primary" 
+                        : "border-l-4 border-transparent"}
                     `}
                 >
                     <div className="relative mx-auto lg:mx-0">
@@ -44,8 +46,8 @@ export default function Sidebar() {
                         />
                             {onlineUsers.includes(user._id) && (
                                 <span
-                                className="absolute bottom-0 right-0 size-3 bg-green-500 
-                                rounded-full ring-2 ring-zinc-900"
+                                    className="absolute bottom-0 right-0 size-3 bg-green-500 
+                                    rounded-full ring-2 ring-zinc-900"
                                 />
                             )}
                     </div>
